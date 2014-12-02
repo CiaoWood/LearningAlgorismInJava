@@ -1,5 +1,5 @@
 
-public class ShellSort extends InsertionSort {
+public class ShellSort extends Sort {
 	// constructor
 	public ShellSort() {
 		super();
@@ -14,20 +14,18 @@ public class ShellSort extends InsertionSort {
 	void SortStart() {
 		int[] array = super.sArr.getArray();
 		int num = array.length;
-		int temp = 0;
-		int j = 0;
 		
 		for(int d = num / 2; d > 0; d /= 2){
 			for(int i = d; i < num; i++){
-				temp = array[i];
-				for(j = i; j >= d; j -= d){
-					if(temp > array[j - d]){
-						array[j] = array[j - d];
+				//temp = array[i];
+				for(int j = i; j >= d; j -= d){
+					if(array[j] < array[j - d]){
+						super.Swap(array, j, j - d);
 					}else{
 						break;
 					}
 				}
-				array[j] = temp;
+				//array[j] = temp;
 			}
 		}
 	}
