@@ -6,12 +6,12 @@ public class Main {
 		SArray myArr2 = new SArray(myArr);
 		
 		Sort bubbleSort = new BubbleSort(myArr);
-		Sort insertionSort = new InsertionSort(myArr2);
+		Sort sort2 = new ShellSort(myArr2);
 
 		long bubbleTime = bubbleSort.PrintRunTime();
-		long insertionTime = insertionSort.PrintRunTime();
+		long time2 = sort2.PrintRunTime();
 		
-		System.out.println(insertionSort.getClass() + " is " + ((double)bubbleTime/insertionTime) + " times faster than " + bubbleSort.getClass());
+		System.out.println(sort2.getClass() + " is " + ((double)bubbleTime/time2) + " times faster than " + bubbleSort.getClass());
 	}
 
 }
