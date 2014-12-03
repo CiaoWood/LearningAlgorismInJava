@@ -2,8 +2,8 @@ import java.util.Random;
 
 
 public class SArray {
-	private int num = 300;
-	private int maxValue = 1000;
+	private int num = 50000;
+	private int maxValue = 50000;
 	private int[] array;
 	private int[] copyArray;
 
@@ -28,6 +28,9 @@ public class SArray {
 		return array;
 	}
 	int[] getCopyArray() {
+		if(copyArray == null){
+			copyArray = new int[num];
+		}
 		return copyArray;
 	}
 	
@@ -48,6 +51,9 @@ public class SArray {
 		for(int i = 0; i < this.getNum(); i++){
 			this.array[i] = arr.getArray()[i];
 		}
+	}
+	public SArray() {
+		// TODO Auto-generated constructor stub
 	}
 	
 	// the function to create random int number for array

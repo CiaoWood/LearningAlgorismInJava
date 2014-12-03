@@ -19,11 +19,11 @@ public abstract class Sort {
 	
 	// the print function that can print run time
 	public long PrintRunTime(){
-		sArr.PrintArray();
+		//sArr.PrintArray();
 		long startTime = System.nanoTime();
 		SortStart();
 		long endTime = System.nanoTime();
-		sArr.PrintArray();
+		//sArr.PrintArray();
 		System.out.println("The " + this.getClass() + " takes " + (endTime - startTime)/1000000.0 + " ms");
 		return (endTime - startTime);
 	}
