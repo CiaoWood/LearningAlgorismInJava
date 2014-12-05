@@ -28,7 +28,12 @@ public class Main {
 		LinkList a = new LinkList<String>();
 		a.CreateLinkList(10);
 		a.PrintLinkList();
-		a.RemoveAt(3);
+		try {
+			a.RemoveAt(53);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		a.PrintLinkList();
 		a.Remove();
 		a.PrintLinkList();

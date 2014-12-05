@@ -64,15 +64,14 @@ public class LinkList<Type> {
 		findTail.next = newTail;
 	}
 	
-	public void Insert(Type c, int idx) {
+	public void Insert(Type c, int idx) throws Exception {
 		assert(idx >= 0);
 		Node newNode = new Node(c);
 		Node findIdxNode = head;
 		for(int i = 0; i < idx; i++){
 			findIdxNode = findIdxNode.next;
 			if(findIdxNode.next == null){
-				System.out.println("insert index must be smaller than the index of link list");
-				return;
+				throw new Exception("The insert index must be smaller than the index of link list");
 			}
 		}
 		Node afterIdxNode = findIdxNode.next;
@@ -80,7 +79,7 @@ public class LinkList<Type> {
 		newNode.next = afterIdxNode;
 	}
 
-	public void RemoveAt(int idx) {
+	public void RemoveAt(int idx) throws Exception {
 		assert(idx >= 0);
 		Node findIdxNode = head;
 		if(idx == 0){
@@ -92,8 +91,7 @@ public class LinkList<Type> {
 				preNode = findIdxNode;
 				findIdxNode = findIdxNode.next;
 				if(findIdxNode.next == null){
-					System.out.println("insert index must be smaller than the index of link list");
-					return;
+					throw new Exception("The remove index must be smaller than the index of link list");
 				}
 			}
 			preNode.next = findIdxNode.next;
