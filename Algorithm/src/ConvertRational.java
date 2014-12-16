@@ -1,4 +1,8 @@
-
+/*
+ * 输入：小数
+ * 输出：分数
+ * 原理：把小数乘以10的某次方使之成为整形数，然后再找到该数字和底数的最大公约数。例如：0.4 = 4 / 10 ， 4 和 10 的最大公约数是 2,故结果是2/5
+ */
 public class ConvertRational implements Testable{
 
 	@Override
@@ -33,7 +37,7 @@ public class ConvertRational implements Testable{
 		
 		// now, use gcd to optimize upper and lower
 		upper /= gcd;
-		lower /=gcd;
+		lower /= gcd;
 		
 		// if lower < 0, we need to move negative value to front
 		if(lower < 0)

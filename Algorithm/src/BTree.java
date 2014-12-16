@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -10,15 +11,90 @@ public class BTree implements Testable {
 	public BTree(int v) {
 		value = v;
 	}
+	
 	int value = 0;
 	BTree left;
 	BTree right;
 	
 	public void Test(){
-		TestIfBST();
-		TestPTL();
+		TestPrintInorderFromPreorder();
 	}
 	
+	private void TestPrintInorderFromPreorder() {
+		// construct a bin search tree;
+		//       6
+		//     4   8
+		//    3 5 7 11
+		int[] preorderArr = {6,4,3,5,8,7,11};
+		ArrayList<BTree> bTreeArr = GetAllTrees(preorderArr, 0, preorderArr.length - 1);
+		for(BTree root : bTreeArr){
+			PrintInorder(root);
+		}
+	}
+	
+	private void PrintInorder(BTree root) {
+		if(root == null) return;
+		PrintInorder(root.left);
+		System.out.print(root.value + ">");
+		PrintInorder(root.right);
+	}
+
+	private ArrayList<BTree> GetAllTrees(int[] inorderArr, int start, int end) {
+		ArrayList<BTree> returnTrees = new ArrayList<BTree>();
+		return returnTrees;
+	}
+
+	public void TestPrintBoundary(){
+		// construct a bin search tree;
+		//       6
+		//     4   8
+		//    3 5 7 11
+		BTree root = new BTree(6);
+		root.left = new BTree(4);
+		root.right = new BTree(8);
+		//root.left.left = new BTree(3);
+		root.left.right = new BTree(5);
+		root.right.left = new BTree(7);
+		root.right.right = new BTree(11);
+		
+		PrintBoundary(root);
+		
+	}
+	
+	private void PrintBoundary(BTree root) {
+		PreorderLeftOnly(root);
+		PreorderLeafOnly(root);
+		PostorderRightOnly(root);
+	}
+
+	private void PostorderRightOnly(BTree root) {
+		if(root == null) return;
+
+		
+		PostorderRightOnly(root.right);
+		//若不判断根节点，则根节点出现2次
+		if(root.left != null || root.right != null)
+			System.out.print(root.value + ">");
+	}
+
+	private void PreorderLeftOnly(BTree root) {
+		if(root == null) return;
+		else if(root.left != null || root.right != null)
+			System.out.print(root.value + ">");
+		//如果是左下角的点，忽略它
+		PreorderLeftOnly(root.left);
+	}
+
+	private void PreorderLeafOnly(BTree root) {
+		if(root == null) return;
+		
+		if(root.left == null && root.right == null)
+			System.out.print(root.value + ">");
+		
+		PreorderLeafOnly(root.left);
+		PreorderLeafOnly(root.right);
+	}
+
 	public void TestIfBST(){
 		// construct a bin search tree;
 		//       6

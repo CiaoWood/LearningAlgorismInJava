@@ -1,3 +1,9 @@
+/*
+ * 输入：一个数组和一个和sumToFind
+ * 输出：数组中的两个数，加起来等于给的和sumToFind
+ * 原理：从数组的第一个元素开始，用二分法在数组中寻找sumToFind-first
+ */
+
 import java.util.ArrayList;
 
 //
@@ -27,7 +33,6 @@ public class FindSum implements Testable {
 		}else{
 			System.out.println("Can't find any combination that can added up to " + sumToFind);
 		}
-		
 	}
 
 	// we assume that the arr is sorted
