@@ -1,24 +1,24 @@
 
-public abstract class Sort {
+public abstract class Sort{
 	
 	public SArray sArr;
 	
 	// constructor
 	public Sort(int num, int maxValue) {
-		sArr.setNum(num);
-		sArr.setMaxValue(maxValue);
+		sArr = new SArray(num, maxValue);
 	}
 	public Sort(SArray sArr) {
 		this.sArr = sArr;
 	}
 	public Sort() {
+		sArr = new SArray();
 	}
 	
 	// the main function that needs to be inherited
 	abstract void SortStart();
 	
 	// the print function that can print run time
-	public long PrintRunTime(){
+	public long GetRunTime(){
 		//sArr.PrintArray();
 		long startTime = System.nanoTime();
 		SortStart();
@@ -46,4 +46,5 @@ public abstract class Sort {
 	public static void Swap(int[] arr, int i, int j){
 		arr[i] = arr[j] + (arr[j] = arr[i]) * 0;
 	}
+
 }

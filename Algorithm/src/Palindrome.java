@@ -1,4 +1,6 @@
-
+/*
+ * 水仙花
+ */
 public class Palindrome implements Testable {
 
 	public void Test(){

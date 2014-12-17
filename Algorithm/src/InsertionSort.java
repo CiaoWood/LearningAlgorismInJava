@@ -1,7 +1,6 @@
 
 public class InsertionSort extends Sort {
 
-	@Override
 	void SortStart() {
 		int[] array = super.sArr.getArray();
 		int num = array.length;

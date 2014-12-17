@@ -1,9 +1,8 @@
 import java.util.Random;
 
-
 public class SArray {
-	private int num = 50000;
-	private int maxValue = 50000;
+	private int num = 1000;
+	private int maxValue = 1000;
 	private int[] array;
 	private int[] copyArray;
 
@@ -53,7 +52,9 @@ public class SArray {
 		}
 	}
 	public SArray() {
-		// TODO Auto-generated constructor stub
+		if(array == null){
+			array = GenRandomArr(this.getNum(), this.getMaxValue());
+		}
 	}
 	
 	// the function to create random int number for array
@@ -77,15 +78,15 @@ public class SArray {
 	// Print Array
 	public void PrintArray(){
 		System.out.println("The array is");
-		for(int i = 0; i < array.length; i++){
-			System.out.print(array[i] + " ");
+		for(int i = 0; i < getArray().length; i++){
+			System.out.print(getArray()[i] + " ");
 		}
 		System.out.println();
 	}
 	public void PrintArray(int[] array){
 		System.out.println("The array is");
-		for(int i = 0; i < array.length; i++){
-			System.out.print(array[i] + " ");
+		for(int i = 0; i < getArray().length; i++){
+			System.out.print(getArray()[i] + " ");
 		}
 		System.out.println();
 	}

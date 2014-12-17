@@ -11,7 +11,6 @@ public class MergeSort extends Sort{
 		super(sArr);
 	}
 	
-	@Override
 	void SortStart() {
 		int[] array = super.sArr.getArray();
 		int num = array.length;

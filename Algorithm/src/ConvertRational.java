@@ -50,6 +50,8 @@ public class ConvertRational implements Testable{
 	// we assue large is larger than small
 	private int GCD(int small, int large) {
 
+		assert(small <= large);
+		
 		int remainder = large % small;
 		
 		if(remainder == 0)

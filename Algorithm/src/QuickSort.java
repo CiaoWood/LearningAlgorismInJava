@@ -11,7 +11,6 @@ public class QuickSort extends Sort {
 		super(sArr);
 	}
 		
-	@Override
 	void SortStart() {
 		int[] arr = super.sArr.getArray();
 		int num = arr.length;

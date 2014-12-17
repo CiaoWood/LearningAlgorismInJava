@@ -1,9 +1,8 @@
 
 public class BubbleSort extends Sort {
 
-	@Override
 	void SortStart() {
-		int[] array = super.sArr.getArray();
+		int[] array = sArr.getArray();
 		int num = array.length;
 		
 		for(int i = 0; i < num; i++){

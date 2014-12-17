@@ -1,5 +1,5 @@
 
-public class LinkList<Type> {
+public class LinkList<Type> implements Testable {
 
 	@SuppressWarnings("hiding")
 	private class Node<Type>{
@@ -45,18 +45,26 @@ public class LinkList<Type> {
 	public void PrintLinkList(){
 		Node node = head;
 		while(node != null){
-			System.out.print(node.item + " ");
+			System.out.print(node.item + ">");
 			node = node.next;
 		}
 		System.out.println();
 	}
 
+	/**
+	 * 加到链表的头部
+	 * @param c
+	 */
 	public void Add2Head(Type c) {
 		Node newHead = new Node(c);
 		newHead.next = head;
 		head = newHead;
 	}
 	
+	/**
+	 * 加到链表的尾部
+	 * @param c
+	 */
 	public void Add(Type c) {
 		Node newTail = new Node(c);
 		Node findTail = head;
@@ -64,13 +72,24 @@ public class LinkList<Type> {
 		findTail.next = newTail;
 	}
 	
+	/**
+	 * 插入链表的任意位置，包括头部和尾部
+	 * @param c 新节点值
+	 * @param idx 插入索引
+	 * @throws Exception 若索引超出范围
+	 */
 	public void Insert(Type c, int idx) throws Exception {
 		assert(idx >= 0);
+		// 若idx=0，则直接调用Add2Head函数插入到头部
+		if(idx == 0) {
+			Add2Head(c);
+			return;
+		}
 		Node newNode = new Node(c);
 		Node findIdxNode = head;
 		for(int i = 0; i < idx; i++){
 			findIdxNode = findIdxNode.next;
-			if(findIdxNode.next == null){
+			if(findIdxNode == null){
 				throw new Exception("The insert index must be smaller than the index of link list");
 			}
 		}
@@ -79,6 +98,11 @@ public class LinkList<Type> {
 		newNode.next = afterIdxNode;
 	}
 
+	/**
+	 * 移除指定索引的元素
+	 * @param idx
+	 * @throws Exception
+	 */
 	public void RemoveAt(int idx) throws Exception {
 		assert(idx >= 0);
 		Node findIdxNode = head;
@@ -90,7 +114,7 @@ public class LinkList<Type> {
 			for(int i = 0; i < idx; i++){
 				preNode = findIdxNode;
 				findIdxNode = findIdxNode.next;
-				if(findIdxNode.next == null){
+				if(findIdxNode == null){
 					throw new Exception("The remove index must be smaller than the index of link list");
 				}
 			}
@@ -108,5 +132,37 @@ public class LinkList<Type> {
 			findTail = findTail.next;
 		}
 		preTail.next = null;
+	}
+
+	@Override
+	public void Test() {
+		LinkList l = new LinkList();
+		l.CreateLinkList(10);
+		System.out.println("The linked list is:");
+		l.PrintLinkList();
+		l.Add("I shall be in the tail");
+		l.PrintLinkList();
+		l.Add2Head("I shall be in the head");
+		l.PrintLinkList();
+		try {
+			l.Insert(888, 3);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		l.PrintLinkList();
+		l.Remove();
+		l.PrintLinkList();
+		try {
+			l.RemoveAt(4);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		l.PrintLinkList();
+		try {
+			l.RemoveAt(0);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		l.PrintLinkList();
 	}
 }
