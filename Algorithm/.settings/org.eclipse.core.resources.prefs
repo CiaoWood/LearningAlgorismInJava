@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/ArrayInplaceRotate.java=UTF-8
 encoding//src/BTree.java=UTF-8
 encoding//src/Calculator.java=UTF-8
 encoding//src/ConvertRational.java=UTF-8
@@ -8,4 +9,6 @@ encoding//src/MaxSubsequentProduct.java=UTF-8
 encoding//src/MaxSum.java=UTF-8
 encoding//src/NumberOccurence.java=UTF-8
 encoding//src/Palindrome.java=UTF-8
+encoding//src/QuickSort.java=UTF-8
+encoding//src/SizeKSubset.java=UTF-8
 encoding//src/Sqrt.java=UTF-8

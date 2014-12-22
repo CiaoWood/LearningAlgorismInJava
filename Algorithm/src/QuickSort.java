@@ -37,7 +37,7 @@ public class QuickSort extends Sort {
 	}
 	
 	/**
-	 * Choose the last element as the pivot, than arrange smaller value to its left, larger value to its right
+	 * Choose the last element as the pivot, then arrange smaller value to its left, larger value to its right
 	 * @param arr
 	 * @param start
 	 * @param end
@@ -47,7 +47,7 @@ public class QuickSort extends Sort {
 		assert(start <= end);
 		int pivotPointer = end;
 		int comparePointer = start;
-		int incre = 1;
+		int incre = 1; //控制加或减，若是正，代表pivot在compare右边
 		while(pivotPointer != comparePointer){
 			if(arr[pivotPointer] < arr[comparePointer] && incre == 1){
 				super.Swap(arr, pivotPointer, comparePointer);

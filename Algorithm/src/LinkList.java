@@ -71,7 +71,11 @@ public class LinkList<Type> implements Testable {
 		while(findTail.next != null) findTail = findTail.next;
 		findTail.next = newTail;
 	}
-	
+	public void Add(Node head, Node toBeAdded) {
+		Node findTail = head;
+		while(findTail.next != null) findTail = findTail.next;
+		findTail.next = toBeAdded;
+	}
 	/**
 	 * 插入链表的任意位置，包括头部和尾部
 	 * @param c 新节点值
@@ -134,8 +138,36 @@ public class LinkList<Type> implements Testable {
 		preTail.next = null;
 	}
 
+	// the header function of reverse
+	public Node Reverse(Node head){
+		if(head == null || head.next == null) return head;
+		
+		Node reversedHead = Reverse(head.next);
+		head.next.next = head;
+		head.next = null;
+		return reversedHead;
+	}
+	
+	public void Reverse(){
+		head = Reverse(head);
+	}
+	
+	public void TestReverse(){
+		LinkList l = new LinkList();
+		l.CreateLinkList(10);
+		System.out.println("The linked list is:");
+		l.PrintLinkList();
+		l.Reverse();
+		System.out.println("The reversed linked list is:");
+		l.PrintLinkList();
+	}
+	
 	@Override
 	public void Test() {
+		TestReverse();
+	}
+	
+	public void TestLinkList() {
 		LinkList l = new LinkList();
 		l.CreateLinkList(10);
 		System.out.println("The linked list is:");

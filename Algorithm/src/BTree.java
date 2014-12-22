@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 
 public class BTree implements Testable {
@@ -17,7 +18,7 @@ public class BTree implements Testable {
 	BTree right;
 	
 	public void Test(){
-		TestPrintInorderFromPreorder();
+		TestPrintInorder();
 	}
 	
 	private void TestPrintInorderFromPreorder() {
@@ -32,6 +33,44 @@ public class BTree implements Testable {
 		}
 	}
 	
+	// test inorder with and without recursion
+	public void TestPrintInorder(){
+		// construct a bin search tree;
+		//       6
+		//     4   8
+		//    3 5 7 11
+		BTree root = new BTree(6);
+		root.left = new BTree(4);
+		root.right = new BTree(8);
+		root.left.left = new BTree(3);
+		root.left.right = new BTree(5);
+		root.right.left = new BTree(7);
+		root.right.right = new BTree(11);
+		
+		PrintInorder(root);
+		System.out.println();
+		PrintInorderRecursion(root);
+	}
+	
+	// inorder that doesn't use inorder
+	private void PrintInorderRecursion(BTree root) {
+		Stack<BTree> stack = new Stack<BTree>();
+		BTree current = root;
+		
+		// only when the current is null and the stack is empty shall we stop the loop
+		while(current != null || !stack.isEmpty()){
+			if(current != null){
+				stack.push(current);
+				current = current.left;
+			}else{
+				current = stack.pop();
+				System.out.print(current.value + " ");
+				current = current.right;
+			}
+		}
+	}
+
+	// inorder using recursion
 	private void PrintInorder(BTree root) {
 		if(root == null) return;
 		PrintInorder(root.left);
