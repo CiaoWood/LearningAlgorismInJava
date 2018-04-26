@@ -1,4 +1,4 @@
-/*
+package javalang;/*
  * 输入：数组，pivot索引 Original: [1, 2, 3, 4, 5, 6, 7, 8, 9] pivot=3
  * 输出：rotate后的数组 After rotated: [5, 6, 7, 8, 9, 1, 2, 3, 4]
  * 原理： reverse3次
@@ -6,9 +6,13 @@
 
 import java.util.Arrays;
 
+/**
+ * @author wuchao
+ */
 public class ArrayInplaceRotate implements Testable {
 
-    public void Test() {
+    @Override
+    public void test() {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int pivot = 3;
         System.out.println("Original: " + Arrays.toString(array));
